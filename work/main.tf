@@ -22,7 +22,7 @@ provider "esxi" {
 #
 resource "esxi_guest" "vmtest02" {
   guest_name = "vmtest02"
-  disk_store = "DS_001"
+  disk_store = "datastore-sata"
   guestos    = "centos-64"
 
   boot_disk_type = "thin"
@@ -37,17 +37,17 @@ resource "esxi_guest" "vmtest02" {
   #  ovf_source uses ovftool to produce a clone from an ovf or vmx image. (typically produced using the ovf_tool).
   #    Basically clone_from_vm clones from sources on the esxi host and ovf_source clones from sources on your local hard disk or a URL.
   #    These two options are mutually exclusive.
-  clone_from_vm = "Templates/centos7"
+  clone_from_vm = "centos7"
 
   #ovf_source        = "/my_local_system_path/centos-7-min/centos-7.vmx"
 
   network_interfaces {
     virtual_network = "VM Network"
-    mac_address     = "00:50:56:a1:b1:c2"
+    mac_address     = "00:0c:29:a1:b1:c2"
     nic_type        = "e1000"
   }
   network_interfaces {
-    virtual_network = "VM Network2"
+    virtual_network = "VM Network"
   }
 
   guest_startup_timeout  = 45

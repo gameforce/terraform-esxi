@@ -17,5 +17,6 @@ variable "esxi_username" {
 }
 
 variable "esxi_password" { # Unspecified will prompt
+  default = "Alpha-male-01"
 }
 

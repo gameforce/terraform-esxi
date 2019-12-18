@@ -20,3 +20,7 @@ variable "esxi_password" { # Unspecified will prompt
   default = "Alpha-male-01"
 }
 
+variable "guest_password" {
+  default = "#thx1138"
+}
+

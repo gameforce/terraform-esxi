@@ -20,8 +20,8 @@ provider "esxi" {
 #  on by default by terraform.  The virtual network "VM Network", must already exist on
 #  your esxi host!
 #
-resource "esxi_guest" "vmtest02" {
-  guest_name = "vmtest02"
+resource "esxi_guest" "default" {
+  guest_name = "kube-master"
   disk_store = "datastore-sata"
   guestos    = "centos-64"
 
@@ -43,11 +43,19 @@ resource "esxi_guest" "vmtest02" {
 
   network_interfaces {
     virtual_network = "VM Network"
-    mac_address     = "00:0c:29:3f:b1:c2"
+    mac_address     = "00:50:56:a1:b1:c0"
     nic_type        = "e1000"
   }
-  network_interfaces {
-    virtual_network = "VM Network"
+
+provisioner "remote-exec" {
+  inline = ["sudo hostnamectl set-hostname kube-master"]
+}
+
+connection {
+    type     = "ssh"
+    user     = "root"
+    password = var.guest_password
+    host     = "centos7-terraform-template"
   }
 
   guest_startup_timeout  = 45

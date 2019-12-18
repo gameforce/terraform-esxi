@@ -43,7 +43,7 @@ provider "esxi" {
     }
 
     provisioner "remote-exec" {
-      inline = ["sudo hostnamectl set-hostname kube-master","sleep 5","sudo reboot"]
+      inline = ["hostnamectl set-hostname kube-master","sleep 5","shutdown -r 5"]
    }
 
   guest_startup_timeout  = 45
@@ -83,7 +83,7 @@ provider "esxi" {
     }
 
     provisioner "remote-exec" {
-      inline = ["sudo hostnamectl set-hostname kube-node1","sleep 5","sudo reboot"]
+      inline = ["hostnamectl set-hostname kube-node1","sleep 10","shutdown -r 5"]
    }
 
   guest_startup_timeout  = 45
@@ -122,7 +122,7 @@ provider "esxi" {
     }
 
     provisioner "remote-exec" {
-      inline = ["sudo hostnamectl set-hostname kube-node2","sleep 5","sudo reboot"]
+      inline = ["hostnamectl set-hostname kube-node2","sleep 15","shutdown -r 5"]
    }
 
   guest_startup_timeout  = 45
@@ -161,7 +161,7 @@ provider "esxi" {
     }
 
     provisioner "remote-exec" {
-      inline = ["sudo hostnamectl set-hostname kube-node3","sleep 5","sudo reboot"]
+      inline = ["hostnamectl set-hostname kube-node3","sleep 20","shutdown -r 5"]
    }
 
   guest_startup_timeout  = 45

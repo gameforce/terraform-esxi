@@ -48,8 +48,7 @@ resource "esxi_guest" "default" {
   }
 
 provisioner "remote-exec" {
-  inline = ["sudo hostnamectl set-hostname kube-master"]
-  inline = ["sleep5","sudo reboot"]
+  inline = ["sudo hostnamectl set-hostname kube-master","sleep 5","sudo reboot"]
 }
 
 connection {

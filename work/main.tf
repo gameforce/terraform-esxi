@@ -43,7 +43,7 @@ resource "esxi_guest" "vmtest02" {
 
   network_interfaces {
     virtual_network = "VM Network"
-    mac_address     = "00:0c:29:a1:b1:c2"
+    mac_address     = "00:0c:29:3f:b1:c2"
     nic_type        = "e1000"
   }
   network_interfaces {

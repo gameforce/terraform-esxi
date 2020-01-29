@@ -1,7 +1,7 @@
 #########################################
 #  ESXI Guest Node
 #########################################
-  resource "esxi_guest" "default" {
+  resource "esxi_guest" "node2" {
   count = 3
   guest_name = "kube-node2"
   disk_store = "datastore-sata"

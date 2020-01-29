@@ -12,10 +12,11 @@ provider "esxi" {
 }
 
 #########################################
-#  ESXI Guest Master
+#  ESXI Guest Node
 #########################################
-  resource "esxi_guest" "master" {
-  guest_name = "kube-master"
+  resource "esxi_guest" "default" {
+  count = 3
+  guest_name = "kube-node2"
   disk_store = "datastore-sata"
   guestos    = "centos-64"
 
@@ -31,7 +32,7 @@ provider "esxi" {
 
     network_interfaces {
       virtual_network = "VM Network"
-      mac_address     = "00:50:56:a1:b1:c0"
+      mac_address     = "00:50:56:a1:b1:c2"
       nic_type        = "e1000"
     }
 
@@ -39,14 +40,13 @@ provider "esxi" {
       type     = "ssh"
       user     = "root"
       password = var.guest_password
-      host     = "centos7-terraform-template"
+      host     = "kube-node2"
     }
 
     provisioner "remote-exec" {
-      inline = ["hostnamectl set-hostname kube-master","sleep 5","shutdown -r"]
+      inline = ["hostnamectl set-hostname kube-node2","sleep 10","shutdown -r"]
    }
 
   guest_startup_timeout  = 45
   guest_shutdown_timeout = 30
-
 }

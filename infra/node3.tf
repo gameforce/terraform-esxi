@@ -2,7 +2,6 @@
 #  ESXI Guest Node
 #########################################
   resource "esxi_guest" "node3" {
-  count = 3
   guest_name = "kube-node3"
   disk_store = "datastore-sata"
   guestos    = "centos-64"

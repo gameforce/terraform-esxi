@@ -81,7 +81,7 @@ provider "esxi" {
       type     = "ssh"
       user     = "root"
       password = var.guest_password
-      host     = "kube-node1"
+      host     = "centos7-terraform-template"
     }
 
     provisioner "remote-exec" {
@@ -123,7 +123,7 @@ provider "esxi" {
       type     = "ssh"
       user     = "root"
       password = var.guest_password
-      host     = "kube-node2"
+      host     = "centos7-terraform-template"
     }
 
     provisioner "remote-exec" {
@@ -164,7 +164,7 @@ provider "esxi" {
       type     = "ssh"
       user     = "root"
       password = var.guest_password
-      host     = "kube-node3"
+      host     = "centos7-terraform-template"
     }
 
     provisioner "remote-exec" {

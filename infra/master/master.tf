@@ -1,8 +1,21 @@
 #########################################
-#  ESXI Guest Node
+#  ESXI Provider host/login details
 #########################################
-  resource "esxi_guest" "node1" {
-  guest_name = "kube-node1"
+#
+#   Use of variables here to hide/move the variables to a separate file
+#
+provider "esxi" {
+  esxi_hostname = var.esxi_hostname
+  esxi_hostport = var.esxi_hostport
+  esxi_username = var.esxi_username
+  esxi_password = var.esxi_password
+}
+
+#########################################
+#  ESXI Guest Master
+#########################################
+  resource "esxi_guest" "master" {
+  guest_name = "kube-master"
   disk_store = "datastore-sata"
   guestos    = "centos-64"
 
@@ -18,7 +31,7 @@
 
     network_interfaces {
       virtual_network = "VM Network"
-      mac_address     = "00:50:56:a1:b1:c1"
+      mac_address     = "00:50:56:a1:b1:c0"
       nic_type        = "e1000"
     }
 
@@ -26,11 +39,11 @@
       type     = "ssh"
       user     = "root"
       password = var.guest_password
-      host     = "kube-node1"
+      host     = "centos7-terraform-template"
     }
 
     provisioner "remote-exec" {
-      inline = ["hostnamectl set-hostname kube-node1","sleep 10","shutdown -r"]
+      inline = ["hostnamectl set-hostname kube-master","sleep 5","shutdown -r"]
    }
 
   guest_startup_timeout  = 45

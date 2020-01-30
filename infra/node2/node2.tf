@@ -1,5 +1,5 @@
 #########################################
-#  ESXI Guest Node
+#  ESXI Guest Node 2
 #########################################
   resource "esxi_guest" "node2" {
   guest_name = "kube-node2"

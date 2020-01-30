@@ -49,6 +49,8 @@ provider "esxi" {
   guest_startup_timeout  = 45
   guest_shutdown_timeout = 30
 
+  depends_on = [esxi_guest.master]
+
 }
 
 #########################################
@@ -89,6 +91,8 @@ provider "esxi" {
   guest_startup_timeout  = 45
   guest_shutdown_timeout = 30
 
+  depends_on = [esxi_guest.master]
+
 }
 
 #########################################
@@ -128,6 +132,8 @@ provider "esxi" {
 
   guest_startup_timeout  = 45
   guest_shutdown_timeout = 30
+
+  depends_on = [esxi_guest.node1]
 }
 
 #########################################
@@ -167,4 +173,6 @@ provider "esxi" {
 
   guest_startup_timeout  = 45
   guest_shutdown_timeout = 30
+
+  depends_on = [esxi_guest.node2]
 }

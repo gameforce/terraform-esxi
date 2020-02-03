@@ -42,9 +42,17 @@ provider "esxi" {
       host     = "centos7-terraform-template"
     }
 
+    provisioner "file" {
+      source      = "scripts/setip_master.sh"
+      destination = "/tmp/setip_master.sh"
+  }
+
     provisioner "remote-exec" {
-      inline = ["hostnamectl set-hostname kube-master","sleep 5","shutdown -r"]
-   }
+      inline = [
+        "chmod +x /tmp/setip_master.sh",
+        "/tmp/setip_master.sh args",
+      ]
+  }
 
   guest_startup_timeout  = 45
   guest_shutdown_timeout = 30
@@ -85,14 +93,14 @@ provider "esxi" {
     }
 
     provisioner "file" {
-      source      = "setip_master.sh"
-      destination = "/tmp/setip_master.sh"
+      source      = "scripts/setip_node1.sh"
+      destination = "/tmp/setip_node1.sh"
   }
 
     provisioner "remote-exec" {
       inline = [
-        "chmod +x /tmp/setip_master.sh",
-        "/tmp/setip_master.sh args",
+        "chmod +x /tmp/setip_node1.sh",
+        "/tmp/setip_node1.sh args",
       ]
   }
 
@@ -134,9 +142,17 @@ provider "esxi" {
       host     = "centos7-terraform-template"
     }
 
+    provisioner "file" {
+      source      = "scripts/setip_node2.sh"
+      destination = "/tmp/setip_node2.sh"
+    }
+
     provisioner "remote-exec" {
-      inline = ["hostnamectl set-hostname kube-node2","sleep 10","shutdown -r"]
-   }
+      inline = [
+        "chmod +x /tmp/setip_node2.sh",
+        "/tmp/setip_node2.sh args",
+      ]
+  }
 
   guest_startup_timeout  = 45
   guest_shutdown_timeout = 30
@@ -175,9 +191,17 @@ provider "esxi" {
       host     = "centos7-terraform-template"
     }
 
+    provisioner "file" {
+      source      = "scripts/setip_node3.sh"
+      destination = "/tmp/setip_node3.sh"
+    }
+
     provisioner "remote-exec" {
-      inline = ["hostnamectl set-hostname kube-node3","sleep 10","shutdown -r"]
-   }
+      inline = [
+        "chmod +x /tmp/setip_node3.sh",
+        "/tmp/setip_node3.sh args",
+      ]
+  }
 
   guest_startup_timeout  = 45
   guest_shutdown_timeout = 30

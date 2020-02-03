@@ -84,9 +84,17 @@ provider "esxi" {
       host     = "centos7-terraform-template"
     }
 
+    provisioner "file" {
+      source      = "setip_master.sh"
+      destination = "/tmp/setip_master.sh"
+  }
+
     provisioner "remote-exec" {
-      inline = ["hostnamectl set-hostname kube-node1","sleep 10","shutdown -r"]
-   }
+      inline = [
+        "chmod +x /tmp/setip_master.sh",
+        "/tmp/setip_master.sh args",
+      ]
+  }
 
   guest_startup_timeout  = 45
   guest_shutdown_timeout = 30

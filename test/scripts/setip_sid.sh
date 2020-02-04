@@ -12,7 +12,7 @@ IPADDR="192.168.11.40/24"
 /sbin/ip a add $IPADDR dev $DEVICE
 
 # Set the Gateway
-/sbin/ip route add 192.168.11.0/24 dev $DEVICE
+# /sbin/ip route add 192.168.11.0/24 dev $DEVICE
 
 # Set DNS
 echo 'nameserver 192.168.11.5' > /etc/resolv.conf

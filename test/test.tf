@@ -39,7 +39,7 @@ provider "esxi" {
       type     = "ssh"
       user     = "root"
       password = var.guest_password
-      host     = "centos7-terraform-template"
+      host     = "192.168.11.40"
     }
 
     provisioner "file" {

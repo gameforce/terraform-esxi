@@ -5,6 +5,9 @@
 DEVICE="$(ip link | grep -i '2:\ ' | cut -d ':' -f 2)"
 IPADDR="192.168.11.40/24" 
 
+# Flush the current IP
+/sbin/ip addr flush dev $DEVICE
+
 # Set the IP
 /sbin/ip a add $IPADDR dev $DEVICE
 

@@ -22,7 +22,9 @@ echo 'search gameforce.net' > /etc/resolv.conf
 /bin/hostnamectl set-hostname sid
 
 # Reboot
-/sbin/shutdown -r now
+/sbin/shutdown -r +1
+
+exit 0;
 
 
 

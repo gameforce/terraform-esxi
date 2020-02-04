@@ -23,4 +23,8 @@ variable "esxi_password" { # Unspecified will prompt
 variable "guest_password" {
   default = "#thx1138"
 }
+variable "guest_template" {
+  default = "192.168.11.40"
+}
+
 

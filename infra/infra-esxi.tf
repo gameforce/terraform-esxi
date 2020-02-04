@@ -39,7 +39,7 @@ provider "esxi" {
       type     = "ssh"
       user     = "root"
       password = var.guest_password
-      host     = "centos7-terraform-template"
+      host     = var.guest_template
     }
 
     provisioner "file" {
@@ -89,7 +89,7 @@ provider "esxi" {
       type     = "ssh"
       user     = "root"
       password = var.guest_password
-      host     = "centos7-terraform-template"
+      host     = var.guest_template
     }
 
     provisioner "file" {
@@ -139,7 +139,7 @@ provider "esxi" {
       type     = "ssh"
       user     = "root"
       password = var.guest_password
-      host     = "centos7-terraform-template"
+      host     = var.guest_template
     }
 
     provisioner "file" {
@@ -188,7 +188,7 @@ provider "esxi" {
       type     = "ssh"
       user     = "root"
       password = var.guest_password
-      host     = "centos7-terraform-template"
+      host     = var.guest_template
     }
 
     provisioner "file" {

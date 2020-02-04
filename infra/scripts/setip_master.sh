@@ -8,9 +8,6 @@ IPADDR="192.168.11.20/24"
 # Set the IP
 /sbin/ip a add $IPADDR dev $DEVICE
 
-# Set the Gateway
-/sbin/ip route add 192.168.11.0/24 dev $DEVICE
-
 # Set DNS
 echo 'nameserver 192.168.11.5' > /etc/resolv.conf
 echo 'search gameforce.net' > /etc/resolv.conf
@@ -19,7 +16,8 @@ echo 'search gameforce.net' > /etc/resolv.conf
 /bin/hostnamectl set-hostname kube-master
 
 # Reboot
-/sbin/shutdown -r now
+/sbin/shutdown -r +1
+exit 0;
 
 
 

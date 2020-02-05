@@ -1,3 +1,5 @@
+# get the information about our infrastructure into the kubespray playbooks to use as its Ansible inventory
+
 resource "null_resource" "ansible-provision" {
 
   depends_on = ["infra-esxi"]
